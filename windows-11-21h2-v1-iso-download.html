@@ -48,10 +48,11 @@
                         </button>
                         <div id="windows-collapse" class="collapse">
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a href="windows-10-iso-download" class="link-dark rounded" id="windows-10">Windows 10</a></li>
+<li><a href="windows-10-iso-download" class="link-dark rounded" id="windows-10">Windows 10</a></li>
 <li><a href="windows-11-iso-download" class="link-dark rounded" id="windows-11">Windows 11</a></li>
 <li><a href="windows-8.1-iso-download" class="link-dark rounded" id="windows-81">Windows 8.1</a></li>
 <li><a href="windows-7-iso-download" class="link-dark rounded" id="windows-7">Windows 7</a></li>
+<li><a href="windows-xp-iso-download" class="link-dark rounded" id="windows-xp">Windows XP</a></li>
                             </ul>
                         </div>
                     </li>
@@ -72,19 +73,19 @@
                                     <h6 class="text-center">Windows 11 Home/Pro/Edu</h6>
                                     <div class="text-center small">Version 21H2 v1 (Build 22000.318) - x64</div>
                                     <div class="text-center small">English</div>
-                                    <div class="text-center mt-2"><a href=" https://software.download.prss.microsoft.com/pr/Win11_English_x64v1.iso?t=9621c4a3-337f-48de-80e8-6f3184950a0d&e=1652240465&h=8e72876a428c164c8b96a87cfc1d8a005aa0788f69d2e5dd7603706f449d9d45" class="btn btn-primary btn-sm stretched-link">Download</a></div>
+                                    <div class="text-center mt-2"><a href=" https://software.download.prss.microsoft.com/pr/Win11_English_x64v1.iso?t=91edf285-9169-42a3-b375-84d667ee321d&e=1652255359&h=d1ae8ef60d100ea2e184e4232e1a3fc9546b5955c6f8bee374ca563d9bef66f7" class="btn btn-primary btn-sm stretched-link">Download</a></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="d-flex mt-3">
                         <hr class="my-auto flex-grow-1" style="background-color: #dee2e6;">
-                        <div class="px-4 small" style="color: #dee2e6;">05/09 19:41 PM</div>
+                        <div class="px-4 small" style="color: #dee2e6;">05/09 23:50 PM</div>
                         <hr class="my-auto flex-grow-1" style="background-color: #dee2e6;">
                     </div>
                 </div>
                 <div class="versions">
-                    <ul class="list-inline">
+<ul class="list-inline">
     <li class="list-inline-item"><a href="windows-11-21h2-v1-iso-download" class="text-decoration-none" id="21h2-v1">21H2 v1</a></li>
     <li class="list-inline-item"><a href="windows-11-21h2-iso-download" class="text-decoration-none" id="21h2">21H2</a></li>
 </ul>
@@ -112,9 +113,11 @@
             if (tmp[3] != 'iso') {
                 ver += '-' + tmp[3];
             }
+            tid = tid.replace('.', '');
+            console.log(tid);
             console.log(ver);
             $('#windows-category').removeClass('collapsed')
-                                .attr('aria-expanded', 'true');
+                                  .attr('aria-expanded', 'true');
             $('#windows-collapse').addClass('show');
 
             $('li a').removeClass("active");
