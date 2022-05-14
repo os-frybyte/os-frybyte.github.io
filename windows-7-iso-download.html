@@ -50,9 +50,19 @@
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
 <li><a href="windows-10-iso-download" class="link-dark rounded" id="windows-10">Windows 10</a></li>
 <li><a href="windows-11-iso-download" class="link-dark rounded" id="windows-11">Windows 11</a></li>
-<li><a href="windows-8.1-iso-download" class="link-dark rounded" id="windows-81">Windows 8.1</a></li>
+<li><a href="windows-8.1-iso-download" class="link-dark rounded" id="windows-8-1">Windows 8.1</a></li>
 <li><a href="windows-7-iso-download" class="link-dark rounded" id="windows-7">Windows 7</a></li>
 <li><a href="windows-xp-iso-download" class="link-dark rounded" id="windows-xp">Windows XP</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="mb-1">
+                        <button id="linux-category" class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#linux-collapse" aria-expanded="false">
+                            Linux
+                        </button>
+                        <div id="linux-collapse" class="collapse">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+<li><a href="ubuntu-desktop-iso-download" class="link-dark rounded" id="ubuntu-desktop">Ubuntu Desktop</a></li>
                             </ul>
                         </div>
                     </li>
@@ -130,7 +140,7 @@
                     </div>
                     <div class="d-flex mt-3">
                         <hr class="my-auto flex-grow-1" style="background-color: #dee2e6;">
-                        <div class="px-4 small" style="color: #dee2e6;">05/13 21:16 PM</div>
+                        <div class="px-4 small" style="color: #dee2e6;">05/14 09:15 AM</div>
                         <hr class="my-auto flex-grow-1" style="background-color: #dee2e6;">
                     </div>
                 </div>
@@ -157,20 +167,30 @@
     $(document).ready(function() {
         var tmp = window.url('-1').split("-");
         if (tmp.length > 3) {
-            var tid = tmp[0] + '-' + tmp[1];
+            var cid = tmp[0] + '-' + tmp[1];
             var ver = tmp[2];
             if (tmp[3] != 'iso') {
                 ver += '-' + tmp[3];
             }
-            tid = tid.replace('.', '');
-            console.log(tid);
+            ver = ver.replace('.', '-');
+            cid = cid.replace('.', '');
+            console.log(cid);
             console.log(ver);
-            $('#windows-category').removeClass('collapsed')
-                                  .attr('aria-expanded', 'true');
-            $('#windows-collapse').addClass('show');
-
+            if (cid.indexOf('windows') >= 0) {
+                $('#windows-category').removeClass('collapsed')
+                                      .attr('aria-expanded', 'true');
+                $('#linux-category').removeClass('collapsed')
+                                    .attr('aria-expanded', 'false');
+                $('#windows-collapse').addClass('show');
+            } else if (cid.indexOf('ubuntu') >= 0) {
+                $('#windows-category').removeClass('collapsed')
+                                      .attr('aria-expanded', 'false');
+                $('#linux-category').removeClass('collapsed')
+                                    .attr('aria-expanded', 'true');
+                $('#linux-collapse').addClass('show');
+            }
             $('li a').removeClass("active");
-            $('#' + tid).addClass('active');
+            $('#' + cid).addClass('active');
             $('#' + ver).addClass('active');
         }
     });

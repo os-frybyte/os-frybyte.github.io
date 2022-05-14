@@ -50,9 +50,19 @@
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
 <li><a href="windows-10-iso-download" class="link-dark rounded" id="windows-10">Windows 10</a></li>
 <li><a href="windows-11-iso-download" class="link-dark rounded" id="windows-11">Windows 11</a></li>
-<li><a href="windows-8.1-iso-download" class="link-dark rounded" id="windows-81">Windows 8.1</a></li>
+<li><a href="windows-8.1-iso-download" class="link-dark rounded" id="windows-8-1">Windows 8.1</a></li>
 <li><a href="windows-7-iso-download" class="link-dark rounded" id="windows-7">Windows 7</a></li>
 <li><a href="windows-xp-iso-download" class="link-dark rounded" id="windows-xp">Windows XP</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="mb-1">
+                        <button id="linux-category" class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#linux-collapse" aria-expanded="false">
+                            Linux
+                        </button>
+                        <div id="linux-collapse" class="collapse">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+<li><a href="ubuntu-desktop-iso-download" class="link-dark rounded" id="ubuntu-desktop">Ubuntu Desktop</a></li>
                             </ul>
                         </div>
                     </li>
@@ -73,7 +83,7 @@
                                     <h6 class="text-center">Windows 8.1 Standard</h6>
                                     <div class="text-center small">Version Update 3 (Build 9600) - x64</div>
                                     <div class="text-center small">English</div>
-                                    <div class="text-center mt-2"><a href=" https://software.download.prss.microsoft.com/dbazure/Win8.1_English_x64.iso?t=0c78b730-8c45-4bc4-8ee3-e1c2c3eaa087&e=1652591426&h=8c3f7a18cde567b1182d5a4dc3878c933a78c8830537aa4f4ed73a7f1f901f14" class="btn btn-primary btn-sm stretched-link">Download</a></div>
+                                    <div class="text-center mt-2"><a href=" https://software.download.prss.microsoft.com/dbazure/Win8.1_English_x64.iso?t=a84a98e7-e7c7-42eb-8759-fb7d5181d19a&e=1652634624&h=de97de733c1847683d96d5d0442abd2eb414681123b5eaa598ba3208f7b5425b" class="btn btn-primary btn-sm stretched-link">Download</a></div>
                                 </div>
                             </div>
                         </div><div class="col-md-6 col-lg-4">
@@ -83,14 +93,14 @@
                                     <h6 class="text-center">Windows 8.1 Standard</h6>
                                     <div class="text-center small">Version Update 3 (Build 9600) - x86</div>
                                     <div class="text-center small">English</div>
-                                    <div class="text-center mt-2"><a href=" https://software.download.prss.microsoft.com/dbazure/Win8.1_English_x32.iso?t=0c78b730-8c45-4bc4-8ee3-e1c2c3eaa087&e=1652591426&h=a9c29f7aa2a9f12e074d59708a6cde33bdcffbe01ac74b01e6f77f31f60ad0f5" class="btn btn-primary btn-sm stretched-link">Download</a></div>
+                                    <div class="text-center mt-2"><a href=" https://software.download.prss.microsoft.com/dbazure/Win8.1_English_x32.iso?t=a84a98e7-e7c7-42eb-8759-fb7d5181d19a&e=1652634624&h=9ba314b08512130254fd91cf1c83c4ae39e6c87464dc800d46b8280fd886b414" class="btn btn-primary btn-sm stretched-link">Download</a></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="d-flex mt-3">
                         <hr class="my-auto flex-grow-1" style="background-color: #dee2e6;">
-                        <div class="px-4 small" style="color: #dee2e6;">05/13 21:11 PM</div>
+                        <div class="px-4 small" style="color: #dee2e6;">05/14 09:11 AM</div>
                         <hr class="my-auto flex-grow-1" style="background-color: #dee2e6;">
                     </div>
                 </div>
@@ -117,20 +127,30 @@
     $(document).ready(function() {
         var tmp = window.url('-1').split("-");
         if (tmp.length > 3) {
-            var tid = tmp[0] + '-' + tmp[1];
+            var cid = tmp[0] + '-' + tmp[1];
             var ver = tmp[2];
             if (tmp[3] != 'iso') {
                 ver += '-' + tmp[3];
             }
-            tid = tid.replace('.', '');
-            console.log(tid);
+            ver = ver.replace('.', '-');
+            cid = cid.replace('.', '');
+            console.log(cid);
             console.log(ver);
-            $('#windows-category').removeClass('collapsed')
-                                  .attr('aria-expanded', 'true');
-            $('#windows-collapse').addClass('show');
-
+            if (cid.indexOf('windows') >= 0) {
+                $('#windows-category').removeClass('collapsed')
+                                      .attr('aria-expanded', 'true');
+                $('#linux-category').removeClass('collapsed')
+                                    .attr('aria-expanded', 'false');
+                $('#windows-collapse').addClass('show');
+            } else if (cid.indexOf('ubuntu') >= 0) {
+                $('#windows-category').removeClass('collapsed')
+                                      .attr('aria-expanded', 'false');
+                $('#linux-category').removeClass('collapsed')
+                                    .attr('aria-expanded', 'true');
+                $('#linux-collapse').addClass('show');
+            }
             $('li a').removeClass("active");
-            $('#' + tid).addClass('active');
+            $('#' + cid).addClass('active');
             $('#' + ver).addClass('active');
         }
     });
