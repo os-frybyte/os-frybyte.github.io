@@ -3,15 +3,20 @@ html {
   min-height: 100%;
 }
 body {
-  margin-bottom: 56px; /* Margin bottom by footer height */
+  margin-bottom: 66px; /* Margin bottom by footer height */
 }
 .footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 56px; /* Set the fixed height of the footer here */
-  line-height: 56px; /* Vertically center the text there */
+  height: 66px; /* Set the fixed height of the footer here */
+  line-height: 66px; /* Vertically center the text there */
   background-color: #dee2e6;
+}
+.footer ul {
+  list-style-type: none;
+  line-height: 25px;
+  margin-top: 10px;
 }
 /* category */
 .fw-semibold { 
